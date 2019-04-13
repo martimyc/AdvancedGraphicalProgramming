@@ -1,0 +1,230 @@
+<RCC>
+    <qresource prefix="/Icons">
+        <file>Icons/anchor.png</file>
+        <file>Icons/Applications.png</file>
+        <file>Icons/Apps.png</file>
+        <file>Icons/Arrow down.png</file>
+        <file>Icons/Arrow left.png</file>
+        <file>Icons/Arrow right.png</file>
+        <file>Icons/Arrow up.png</file>
+        <file>Icons/Badge-cancel.png</file>
+        <file>Icons/Badge-multiply.png</file>
+        <file>Icons/Badge-plus.png</file>
+        <file>Icons/Badge-tick.png</file>
+        <file>Icons/basket.png</file>
+        <file>Icons/Basketball.png</file>
+        <file>Icons/Battery.png</file>
+        <file>Icons/Billing.png</file>
+        <file>Icons/Binoculars.png</file>
+        <file>Icons/Bird green.png</file>
+        <file>Icons/Bird twitter.png</file>
+        <file>Icons/blueprint.png</file>
+        <file>Icons/blueprint2.png</file>
+        <file>Icons/blueprint3.png</file>
+        <file>Icons/blueprint4.png</file>
+        <file>Icons/blueprint5.png</file>
+        <file>Icons/book fb.png</file>
+        <file>Icons/Book.png</file>
+        <file>Icons/bookmark.png</file>
+        <file>Icons/Box double tape.png</file>
+        <file>Icons/Box with tape.png</file>
+        <file>Icons/Box.png</file>
+        <file>Icons/Briefcase.png</file>
+        <file>Icons/Brushes.png</file>
+        <file>Icons/Bubble chat.png</file>
+        <file>Icons/Bubble twitter 2.png</file>
+        <file>Icons/Bubble twitter.png</file>
+        <file>Icons/Bullseye.png</file>
+        <file>Icons/Burn.png</file>
+        <file>Icons/burning disc.png</file>
+        <file>Icons/Cabinet.png</file>
+        <file>Icons/Calculator full.png</file>
+        <file>Icons/Calculator operations.png</file>
+        <file>Icons/Calender day.png</file>
+        <file>Icons/Calender Month.png</file>
+        <file>Icons/camera.png</file>
+        <file>Icons/Cash 2.png</file>
+        <file>Icons/Cash.png</file>
+        <file>Icons/CD case.png</file>
+        <file>Icons/Chalkboard.png</file>
+        <file>Icons/Chalkboard2.png</file>
+        <file>Icons/chat.png</file>
+        <file>Icons/Clipboard b.png</file>
+        <file>Icons/Clipboard.png</file>
+        <file>Icons/clock.png</file>
+        <file>Icons/Cloud.png</file>
+        <file>Icons/Coffee I(L)NY .png</file>
+        <file>Icons/Coffee.png</file>
+        <file>Icons/Colour picker.png</file>
+        <file>Icons/Colours CMYK.png</file>
+        <file>Icons/Colours RGB.png</file>
+        <file>Icons/Console.png</file>
+        <file>Icons/contacts.png</file>
+        <file>Icons/Contacts2.png</file>
+        <file>Icons/cork.png</file>
+        <file>Icons/Crate Download.png</file>
+        <file>Icons/Crate Upload.png</file>
+        <file>Icons/Crate.png</file>
+        <file>Icons/credit american express.png</file>
+        <file>Icons/Credit card 2.png</file>
+        <file>Icons/Credit card.png</file>
+        <file>Icons/credit master card.png</file>
+        <file>Icons/credit paypal.png</file>
+        <file>Icons/credit visa.png</file>
+        <file>Icons/Database.png</file>
+        <file>Icons/Diary.png</file>
+        <file>Icons/dictionary.png</file>
+        <file>Icons/Disc Blu Ray.png</file>
+        <file>Icons/Disc DVD.png</file>
+        <file>Icons/Disquette.png</file>
+        <file>Icons/Doc single.png</file>
+        <file>Icons/Doc yellow.png</file>
+        <file>Icons/Doc.png</file>
+        <file>Icons/Documents.png</file>
+        <file>Icons/Download crate.png</file>
+        <file>Icons/Dribble.png</file>
+        <file>Icons/earth.png</file>
+        <file>Icons/Electric interruptor.png</file>
+        <file>Icons/Electric socket 2.png</file>
+        <file>Icons/Electric socket.png</file>
+        <file>Icons/Empty document delete.png</file>
+        <file>Icons/Empty document new.png</file>
+        <file>Icons/Empty document.png</file>
+        <file>Icons/Envelope.png</file>
+        <file>Icons/evernote.png</file>
+        <file>Icons/Facebook.png</file>
+        <file>Icons/Filmroll.png</file>
+        <file>Icons/Flag.png</file>
+        <file>Icons/Flask.png</file>
+        <file>Icons/float.png</file>
+        <file>Icons/Folder docs.png</file>
+        <file>Icons/Folder downloads.png</file>
+        <file>Icons/Folder movies.png</file>
+        <file>Icons/Folder music.png</file>
+        <file>Icons/Folder pictures.png</file>
+        <file>Icons/Folder user.png</file>
+        <file>Icons/Folder web.png</file>
+        <file>Icons/Folder.png</file>
+        <file>Icons/Gift.png</file>
+        <file>Icons/Glasses.png</file>
+        <file>Icons/gMail.png</file>
+        <file>Icons/GPS.png</file>
+        <file>Icons/Hard drive.png</file>
+        <file>Icons/heart.png</file>
+        <file>Icons/home.png</file>
+        <file>Icons/Identification card.png</file>
+        <file>Icons/iMac.png</file>
+        <file>Icons/iPhone.png</file>
+        <file>Icons/iPod.png</file>
+        <file>Icons/key.png</file>
+        <file>Icons/Keychain.png</file>
+        <file>Icons/Keychain2.png</file>
+        <file>Icons/Laptop white.png</file>
+        <file>Icons/Laptop.png</file>
+        <file>Icons/Leaf.png</file>
+        <file>Icons/Lightbulb Off.png</file>
+        <file>Icons/Lightbulb.png</file>
+        <file>Icons/Loudspeaker.png</file>
+        <file>Icons/magic.png</file>
+        <file>Icons/Magnet.png</file>
+        <file>Icons/Mail.png</file>
+        <file>Icons/Mail2.png</file>
+        <file>Icons/MailFront.png</file>
+        <file>Icons/Map.png</file>
+        <file>Icons/metallic briefcase.png</file>
+        <file>Icons/moleskine.png</file>
+        <file>Icons/money gold.png</file>
+        <file>Icons/Money silver.png</file>
+        <file>Icons/Monitor - black.png</file>
+        <file>Icons/Monitor.png</file>
+        <file>Icons/Movies.png</file>
+        <file>Icons/Music Note Blue.png</file>
+        <file>Icons/Music Note Cian.png</file>
+        <file>Icons/Music Note Green.png</file>
+        <file>Icons/Music Note Pink.png</file>
+        <file>Icons/Music.png</file>
+        <file>Icons/nano  yellow.png</file>
+        <file>Icons/nano black.png</file>
+        <file>Icons/nano blue.png</file>
+        <file>Icons/nano green.png</file>
+        <file>Icons/nano orange.png</file>
+        <file>Icons/nano pink.png</file>
+        <file>Icons/nano red.png</file>
+        <file>Icons/nano white.png</file>
+        <file>Icons/Network radar.png</file>
+        <file>Icons/News.png</file>
+        <file>Icons/Notes.png</file>
+        <file>Icons/Orb help.png</file>
+        <file>Icons/Orb info.png</file>
+        <file>Icons/Orb minus.png</file>
+        <file>Icons/Orb plus.png</file>
+        <file>Icons/Orb POdcast.png</file>
+        <file>Icons/Orb RSS.png</file>
+        <file>Icons/paint tools.png</file>
+        <file>Icons/Paint.png</file>
+        <file>Icons/Pen tool.png</file>
+        <file>Icons/Pen.png</file>
+        <file>Icons/Pencil yellow.png</file>
+        <file>Icons/Pencil.png</file>
+        <file>Icons/Picture.png</file>
+        <file>Icons/Pictures.png</file>
+        <file>Icons/PLayer back.png</file>
+        <file>Icons/player FF.png</file>
+        <file>Icons/Player Fordward.png</file>
+        <file>Icons/player pause.png</file>
+        <file>Icons/player play.png</file>
+        <file>Icons/Player REW.png</file>
+        <file>Icons/PLayer STop.png</file>
+        <file>Icons/Player.png</file>
+        <file>Icons/Plugins.png</file>
+        <file>Icons/Post.png</file>
+        <file>Icons/Power.png</file>
+        <file>Icons/Printer modern.png</file>
+        <file>Icons/Printer.png</file>
+        <file>Icons/Prize.png</file>
+        <file>Icons/Project.png</file>
+        <file>Icons/Project2.png</file>
+        <file>Icons/Recicle bin.png</file>
+        <file>Icons/RSS.png</file>
+        <file>Icons/Ruler 2.png</file>
+        <file>Icons/Ruler.png</file>
+        <file>Icons/Safari.png</file>
+        <file>Icons/Safe box.png</file>
+        <file>Icons/Script.png</file>
+        <file>Icons/Shield.png</file>
+        <file>Icons/Shleves.png</file>
+        <file>Icons/Shop.png</file>
+        <file>Icons/Shopping bag.png</file>
+        <file>Icons/Shopping bag1.png</file>
+        <file>Icons/Shopping bag2.png</file>
+        <file>Icons/Shopping bag3.png</file>
+        <file>Icons/Sign direction.png</file>
+        <file>Icons/Signal attention.png</file>
+        <file>Icons/Signal stop.png</file>
+        <file>Icons/Signal yield.png</file>
+        <file>Icons/Skype.png</file>
+        <file>Icons/SmartPhone.png</file>
+        <file>Icons/Sofa.png</file>
+        <file>Icons/star.png</file>
+        <file>Icons/Statistics PieChart.png</file>
+        <file>Icons/Statistics.png</file>
+        <file>Icons/Streaming.png</file>
+        <file>Icons/System monitoring.png</file>
+        <file>Icons/System.png</file>
+        <file>Icons/Tablet design.png</file>
+        <file>Icons/Tag.png</file>
+        <file>Icons/TagB.png</file>
+        <file>Icons/Text.png</file>
+        <file>Icons/Ticket.png</file>
+        <file>Icons/Tools.png</file>
+        <file>Icons/Traffic cone.png</file>
+        <file>Icons/Twitter.png</file>
+        <file>Icons/USB.png</file>
+        <file>Icons/User.png</file>
+        <file>Icons/Wall.png</file>
+        <file>Icons/Wallet.png</file>
+        <file>Icons/Wallet2.png</file>
+        <file>Icons/Write document.png</file>
+        <file>Icons/Zoom.png</file>
+    </qresource>
+</RCC>
