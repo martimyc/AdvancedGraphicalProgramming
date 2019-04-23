@@ -12,6 +12,7 @@ class MainWindow;
 
 class EntityManager;
 class Entity;
+class OpenGLWidget;
 
 class MainWindow : public QMainWindow
 {
@@ -60,6 +61,7 @@ private:
     //Widget references
     QWidget* inspector;
     EntityManager* hierarchy;
+    OpenGLWidget* gl;
 
     //Sections
     ADS_NS::SectionWidget* rightSection = nullptr;
@@ -67,6 +69,7 @@ private:
     // Container references
     ADS_NS::SectionContent::RefPtr _inspector;
     ADS_NS::SectionContent::RefPtr _hierarchy;
+    ADS_NS::SectionContent::RefPtr _gl;
 };
 
 #endif // MAINWINDOW_H

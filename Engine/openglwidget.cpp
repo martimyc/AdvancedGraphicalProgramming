@@ -17,7 +17,7 @@ void OpenGLWidget::initializeGL()
     initializeOpenGLFunctions();
 
     //Initialize info
-    info.Initialize(context());
+    info.Initialize(*this);
 
     //Handle context destructions
     connect(context(), SIGNAL(aboutToBeDestroyed()), this, SLOT(finalizeGL()));

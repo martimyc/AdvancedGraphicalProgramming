@@ -16,7 +16,7 @@ void GLInfo::Initialize(OpenGLWidget& gl)
 
     //Extensions
     GLint numExtensions;
-    glGetIntegerv(GL_NUM_EXTENSIONS, &numExtensions);
+    gl.glGetIntegerv(GL_NUM_EXTENSIONS, &numExtensions);
     for(int i = 0; i < numExtensions; i++)
     {
         extensions.push_back(reinterpret_cast<char const *>(gl.glGetStringi(GL_EXTENSIONS, GLuint(i))));
@@ -32,6 +32,8 @@ void GLInfo::Initialize(OpenGLWidget& gl)
 
 void GLInfo::Print() const
 {
+    QString text;
+
     std::cout << "Open GL Version: " << version.toStdString() << std::endl;
     std::cout << "Open GL Renderer: " << renderer.toStdString() << std::endl;
     std::cout << "Open GL Vendor: " << vendor.toStdString() << std::endl;

@@ -22,13 +22,14 @@
 
 #include "entitymanager.h"
 #include "entity.h"
+#include "openglwidget.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    //rendering(new Rendering(this)),
     inspector(new QWidget),
-    hierarchy(new EntityManager(this))
+    hierarchy(new EntityManager(this)),
+    gl(new OpenGLWidget)
 {
     ui->setupUi(this);
 
@@ -59,6 +60,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAboutOpenGL, SIGNAL(triggered()), this, SLOT(aboutOpenGL()));
 
     //Add widgets to containter
+    //OpenGL
+    _gl = ADS_NS::SectionContent::newSectionContent(QString("Open_GL"), _container, new QLabel("Open GL"), gl);
+    _container->addSectionContent(_hierarchy, nullptr, ADS_NS::CenterDropArea);
+
     //Hierarchy
     _hierarchy = ADS_NS::SectionContent::newSectionContent(QString("Hierarchy"), _container, new QLabel("Hierarchy"), hierarchy);
     _container->addSectionContent(_hierarchy, nullptr, ADS_NS::LeftDropArea);
@@ -104,7 +109,6 @@ void MainWindow::saveProject()
 
 void MainWindow::aboutOpenGL() const
 {
-    //QString text =
     //QMessageBox messageBox = QMessageBox::about(nullptr, "About Open GL", text);
 }
 
