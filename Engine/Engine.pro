@@ -50,7 +50,11 @@ SOURCES += \
     entitymanager.cpp \
     icontitlewidget.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    transformwidget.cpp \
+    transform.cpp \
+    openglwidget.cpp \
+    glinfo.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -67,12 +71,17 @@ HEADERS += \
     entitymanager.h \
     globals.h \
     icontitlewidget.h \
-    mainwindow.h
+    mainwindow.h \
+    transformwidget.h \
+    transform.h \
+    openglwidget.h \
+    glinfo.h
 
 FORMS += \
         mainwindow.ui \
     entitymanager.ui \
-    dialogs/SectionContentListWidget.ui
+    dialogs/SectionContentListWidget.ui \
+    transformwidget.ui
 
 RESOURCES += \
     icons.qrc

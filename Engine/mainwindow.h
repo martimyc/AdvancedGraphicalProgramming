@@ -10,8 +10,6 @@ namespace Ui {
 class MainWindow;
 }
 
-class Rendering;
-class CustomPainter;
 class EntityManager;
 class Entity;
 
@@ -23,11 +21,13 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void UpdateInspector(Entity* focused);
-
 public slots:
     void openProject();
     void saveProject();
+
+    //About
+    void aboutOpenGL() const;
+    void aboutQt() const;
 
 private slots:
     void updateInspector();
@@ -49,6 +49,7 @@ private slots:
 protected:
     virtual void contextMenuEvent(QContextMenuEvent* e);
     virtual void closeEvent(QCloseEvent* e);
+    //-----
 
 private:
     Ui::MainWindow *ui;
@@ -57,17 +58,13 @@ private:
     ADS_NS::ContainerWidget* _container;
 
     //Widget references
-    CustomPainter* customPainter;
-    //Rendering* rendering;
     QWidget* inspector;
     EntityManager* hierarchy;
 
     //Sections
-    ADS_NS::SectionWidget* right_section = nullptr;
+    ADS_NS::SectionWidget* rightSection = nullptr;
 
     // Container references
-    ADS_NS::SectionContent::RefPtr _customPainter;
-    //ADS_NS::SectionContent::RefPtr _rendering;
     ADS_NS::SectionContent::RefPtr _inspector;
     ADS_NS::SectionContent::RefPtr _hierarchy;
 };

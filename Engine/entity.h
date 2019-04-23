@@ -19,6 +19,7 @@ public:
     //Component functions
     void AddComponent(Component* component);
     void RemoveComponent(Component* component);
+    void DeleteAllComponents();
 
     //Inspector
     QVBoxLayout* GenerateWidgets();

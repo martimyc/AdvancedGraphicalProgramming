@@ -2,10 +2,6 @@
 
 #include <iostream>
 
-#include <QBrush>
-#include <QPen>
-#include <QPainter>
-#include <QtMath>
 #include <QBoxLayout>
 
 #include "globals.h"
@@ -37,13 +33,23 @@ void Entity::RemoveComponent(Component* component)
         }
     }
 
+    std::cout << "Entity: All components removed from " << this->text(0).toStdString() << std::endl;
+}
+
+void Entity::DeleteAllComponents()
+{
+    for(std::vector<Component*>::iterator it = components.begin(); it != components.end(); it++)
+    {
+        delete *it;
+        *it = nullptr;
+    }
+    components.clear();
+
     std::cout << "Entity: Could not find child" << std::endl;
 }
 
 QVBoxLayout* Entity::GenerateWidgets()
 {
-    //Remove all previous widgets
-
     //Create Layout
     QVBoxLayout* layout = new QVBoxLayout;
 
@@ -58,6 +64,8 @@ QVBoxLayout* Entity::GenerateWidgets()
         horizontalLineWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 
         layout->addWidget(horizontalLineWidget);*/
+
+        layout->addWidget((*it)->GenerateWidget());
     }
 
     //Return layout

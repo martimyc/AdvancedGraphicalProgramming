@@ -7,6 +7,7 @@
 
 #include "entity.h"
 #include "mainwindow.h"
+#include "transform.h"
 
 EntityManager::EntityManager(QWidget *parent) :
     QWidget(parent),
@@ -17,8 +18,14 @@ EntityManager::EntityManager(QWidget *parent) :
     QString name ("Root");
     root = new Entity(name);
 
+    //Add transform
+    Component* transform = new Transform(root);
+    root->AddComponent(transform);
+
+    //Add it to widget hirarchy
     ui->treeWidget->addTopLevelItem(root);
 
+    //Connect buttons
     connect(ui->createButton, SIGNAL(clicked()), this, SLOT(createEntityButton()));
     connect(ui->deleteButton, SIGNAL(clicked()), this, SLOT(deleteEntityButton()));
 }
@@ -28,18 +35,28 @@ EntityManager::~EntityManager()
     delete ui;
 }
 
-Entity* EntityManager::CreateEntity(Entity* parent)
+Entity* EntityManager::CreateEntity(Entity* parent, QString name)
 {
-    QString name = "Entity_" + QString::number(entities.size());
+    if(name == NULL)
+    {
+        //Name
+        name = "Entity_" + QString::number(entities.size());
+    }
 
+    //Ensure parent is not null
     if(parent == nullptr)
     {
         parent = root;
     }
 
+    //Create & add to parent as child
     Entity* new_entity = new Entity( name, parent);
     parent->addChild(new_entity);
     entities.push_back(new_entity);
+
+    //Add transform
+    Component* transform = new Transform(new_entity);
+    new_entity->AddComponent(transform);
 
     return new_entity;
 }
@@ -64,6 +81,7 @@ void EntityManager::DeleteEntity(Entity* del)
             }
 
             del->parent()->removeChild(del);
+            del->DeleteAllComponents();
             delete del;
             return;
         }

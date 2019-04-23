@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
+#include <QSurfaceFormat>
+#include "transform.h"
 
 static void initStyleSheet(QApplication& a)
 {
@@ -18,6 +20,19 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     a.setQuitOnLastWindowClosed(true);
     initStyleSheet(a);
+
+    //Configuration of open GL surface format
+    QSurfaceFormat format = QSurfaceFormat::defaultFormat();
+    format.setMajorVersion(3);
+    format.setMinorVersion(3);
+    format.setProfile(QSurfaceFormat::CoreProfile);
+    format.setDepthBufferSize(24);
+    format.setRedBufferSize(8);
+    format.setGreenBufferSize(8);
+    format.setBlueBufferSize(8);
+    format.setAlphaBufferSize(8);
+    format.setSwapBehavior(QSurfaceFormat::SwapBehavior::DoubleBuffer);
+    QSurfaceFormat::setDefaultFormat(format);
 
     MainWindow mw;
     mw.show();

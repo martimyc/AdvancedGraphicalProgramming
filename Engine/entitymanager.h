@@ -21,7 +21,7 @@ public:
     ~EntityManager();
 
     //Create
-    Entity* CreateEntity(Entity* parent = nullptr);
+    Entity* CreateEntity(Entity* parent = nullptr, QString name = NULL);
 
     //Delete
     void DeleteEntity(Entity *del);

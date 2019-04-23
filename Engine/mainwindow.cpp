@@ -12,6 +12,7 @@
 #include <QTreeView>
 #include <QFileSystemModel>
 #include <QBoxLayout>
+#include <QMessageBox>
 
 #include "ads/SectionWidget.h"
 #include "ads/DropOverlay.h"
@@ -50,20 +51,24 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionSave_project, SIGNAL(triggered()), this, SLOT(saveProject()));
     connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(quit()));
 
+    //Update inspector
+    connect(hierarchy->GetTreeWidget(), SIGNAL(itemSelectionChanged()), this, SLOT(updateInspector()));
+
+    //About
+    connect(ui->actionAboutQt, SIGNAL(triggered()), this, SLOT(aboutQt()));
+    connect(ui->actionAboutOpenGL, SIGNAL(triggered()), this, SLOT(aboutOpenGL()));
+
     //Add widgets to containter
     //Hierarchy
     _hierarchy = ADS_NS::SectionContent::newSectionContent(QString("Hierarchy"), _container, new QLabel("Hierarchy"), hierarchy);
-    right_section = _container->addSectionContent(_hierarchy, right_section, ADS_NS::RightDropArea);
+    _container->addSectionContent(_hierarchy, nullptr, ADS_NS::LeftDropArea);
 
     //Inspector
     _inspector = ADS_NS::SectionContent::newSectionContent(QString("Inspector"), _container, new QLabel("Inspector"), inspector);
-    right_section = _container->addSectionContent(_inspector, right_section, ADS_NS::BottomDropArea);
+    rightSection = _container->addSectionContent(_inspector, rightSection, ADS_NS::RightDropArea);
 
     //Set Size
     resize(1080, 720);
-
-    //Update inspector
-    connect(hierarchy->GetTreeWidget(), SIGNAL(itemSelectionChanged()), this, SLOT(updateInspector()));
 }
 
 MainWindow::~MainWindow()
@@ -78,19 +83,13 @@ MainWindow::~MainWindow()
     delete _container;
 }
 
-void MainWindow::UpdateInspector(Entity *focused)
-{
-    _container->removeSectionContent(_inspector);
-    //delete inspector;
-    inspector = new EntityManager;
-    _inspector = ADS_NS::SectionContent::newSectionContent(QString("Hi"), _container, new QLabel("Hi"), inspector);
-    _container->addSectionContent(_inspector);
-    //focused->Inspector( inspector);
-}
-
 void MainWindow::updateInspector()
 {
-    UpdateInspector(hierarchy->GetFocused());
+    _container->removeSectionContent(_inspector);
+    inspector = new QWidget;
+    inspector->setLayout(hierarchy->GetFocused()->GenerateWidgets());
+    _inspector = ADS_NS::SectionContent::newSectionContent(QString("Hi"), _container, new QLabel("Hi"), inspector);
+    _container->addSectionContent(_inspector, nullptr, ADS_NS::RightDropArea);
 }
 
 void MainWindow::openProject()
@@ -103,6 +102,16 @@ void MainWindow::saveProject()
     std::cout << "Save project" << std::endl;
 }
 
+void MainWindow::aboutOpenGL() const
+{
+    //QString text =
+    //QMessageBox messageBox = QMessageBox::about(nullptr, "About Open GL", text);
+}
+
+void MainWindow::aboutQt() const
+{
+    QMessageBox::aboutQt(nullptr, "About Qt");
+}
 
 ///////////////////////////////////////////////////////////////////////
 //Docking
