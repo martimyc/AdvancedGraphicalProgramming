@@ -2,35 +2,32 @@
 
 #include "iostream"
 
-#include <QOpenGLWidget>
-#include <QOpenGLFunctions_3_3_Core>
+#include "openglwidget.h"
 
 GLInfo::GLInfo()
 {}
 
-void GLInfo::Initialize(const QOpenGLContext* context)
+void GLInfo::Initialize(OpenGLWidget& gl)
 {
-    version = reinterpret_cast<char const *>(glGetString(GL_VERSION));
-    renderer = reinterpret_cast<char const *>(glGetString(GL_RENDERER));
-    vendor = reinterpret_cast<char const *>(glGetString(GL_VENDOR));
-    glslVersion = reinterpret_cast<char const *>(glGetString(GL_SHADING_LANGUAGE_VERSION));
+    version = reinterpret_cast<char const *>(gl.glGetString(GL_VERSION));
+    renderer = reinterpret_cast<char const *>(gl.glGetString(GL_RENDERER));
+    vendor = reinterpret_cast<char const *>(gl.glGetString(GL_VENDOR));
+    glslVersion = reinterpret_cast<char const *>(gl.glGetString(GL_SHADING_LANGUAGE_VERSION));
 
     //Extensions
-    /*GLint numExtensions;
+    GLint numExtensions;
     glGetIntegerv(GL_NUM_EXTENSIONS, &numExtensions);
     for(int i = 0; i < numExtensions; i++)
     {
-        const unsigned char* str = glGetStringi(GL_EXTENSIONS, GLuint(i))
-        QString newExtension(reinterpret_cast<char const *>());
-        extensions.push_back(newExtension);
-    }*/
+        extensions.push_back(reinterpret_cast<char const *>(gl.glGetStringi(GL_EXTENSIONS, GLuint(i))));
+    }
 
     //Surface Format info
-    redBufferSize = context->format().redBufferSize();
-    greenBufferSize = context->format().greenBufferSize();
-    blueBufferSize = context->format().blueBufferSize();
-    alphaBufferSize = context->format().alphaBufferSize();
-    depthBufferSize = context->format().depthBufferSize();
+    redBufferSize = gl.context()->format().redBufferSize();
+    greenBufferSize = gl.context()->format().greenBufferSize();
+    blueBufferSize = gl.context()->format().blueBufferSize();
+    alphaBufferSize = gl.context()->format().alphaBufferSize();
+    depthBufferSize = gl.context()->format().depthBufferSize();
 }
 
 void GLInfo::Print() const

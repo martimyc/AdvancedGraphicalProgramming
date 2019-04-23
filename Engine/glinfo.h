@@ -4,14 +4,14 @@
 #include <vector>
 #include <QString>
 
-class QOpenGLContext;
+class OpenGLWidget;
 
 class GLInfo
 {
 public:
     GLInfo();
 
-    void Initialize(const QOpenGLContext* context); //Must call after initializing GL and with GL context active
+    void Initialize(OpenGLWidget& gl); //Must call after initializing GL and with GL context active
     void Print() const;
 
 private:
