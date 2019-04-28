@@ -1,6 +1,6 @@
 #include "glinfo.h"
 
-#include "iostream"
+#include <sstream>
 
 #include "openglwidget.h"
 
@@ -30,30 +30,33 @@ void GLInfo::Initialize(OpenGLWidget& gl)
     depthBufferSize = gl.context()->format().depthBufferSize();
 }
 
-void GLInfo::Print() const
+QString GLInfo::Print() const
 {
-    QString text;
+    std::stringstream ss;
 
-    std::cout << "Open GL Version: " << version.toStdString() << std::endl;
-    std::cout << "Open GL Renderer: " << renderer.toStdString() << std::endl;
-    std::cout << "Open GL Vendor: " << vendor.toStdString() << std::endl;
-    std::cout << "Open GLSL Version: " << glslVersion.toStdString() << std::endl;
+    ss << "Open GL Version: " << version.toStdString() << std::endl;
+    ss << "Open GL Renderer: " << renderer.toStdString() << std::endl;
+    ss << "Open GL Vendor: " << vendor.toStdString() << std::endl;
+    ss << "Open GLSL Version: " << glslVersion.toStdString() << std::endl;
 
-    std::cout << std::endl;
-
-    //Extensions
-    std::cout << "Open GL Extensions: " << std::endl;
-    for(std::vector<QString>::const_iterator it = extensions.begin(); it != extensions.end(); it++)
-    {
-        std::cout << "- " << it->toStdString() << std::endl;
-    }
-
-    std::cout << std::endl;
+    ss << std::endl;
 
     //Surface Format info
-    std::cout << "Red Buffer Size: " << redBufferSize << std::endl;
-    std::cout << "Green Buffer Size: " << greenBufferSize << std::endl;
-    std::cout << "Blue Buffer Size: " << blueBufferSize << std::endl;
-    std::cout << "Alpha Buffer Size: " << alphaBufferSize << std::endl;
-    std::cout << "Depth Buffer Size: " << depthBufferSize << std::endl;
+    ss << "Surface Format Information:" << std::endl;
+    ss << "Red Buffer Size: " << redBufferSize << std::endl;
+    ss << "Green Buffer Size: " << greenBufferSize << std::endl;
+    ss << "Blue Buffer Size: " << blueBufferSize << std::endl;
+    ss << "Alpha Buffer Size: " << alphaBufferSize << std::endl;
+    ss << "Depth Buffer Size: " << depthBufferSize << std::endl;
+
+    ss << std::endl;
+
+    //Extensions
+    ss << "Open GL Extensions: " << std::endl;
+    for(std::vector<QString>::const_iterator it = extensions.begin(); it != extensions.end(); it++)
+    {
+        ss << it->toStdString() << ", ";
+    }
+
+    return QString(ss.str().c_str());
 }

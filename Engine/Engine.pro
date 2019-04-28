@@ -54,7 +54,8 @@ SOURCES += \
     transformwidget.cpp \
     transform.cpp \
     openglwidget.cpp \
-    glinfo.cpp
+    glinfo.cpp \
+    triangle.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -75,7 +76,8 @@ HEADERS += \
     transformwidget.h \
     transform.h \
     openglwidget.h \
-    glinfo.h
+    glinfo.h \
+    triangle.h
 
 FORMS += \
         mainwindow.ui \
@@ -84,7 +86,8 @@ FORMS += \
     transformwidget.ui
 
 RESOURCES += \
-    icons.qrc
+    icons.qrc \
+    shaders.qrc
 
 # Dependency: AdvancedDockingSystem (shared)
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../AdvancedDockingSystem/release/ -lAdvancedDockingSystem1
@@ -97,3 +100,6 @@ DEPENDPATH += $$PWD/../AdvancedDockingSystem/include
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    Shaders/shader1_frag.fsh

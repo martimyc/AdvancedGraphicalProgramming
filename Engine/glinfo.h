@@ -12,7 +12,7 @@ public:
     GLInfo();
 
     void Initialize(OpenGLWidget& gl); //Must call after initializing GL and with GL context active
-    void Print() const;
+    QString Print() const;
 
 private:
     QString version;

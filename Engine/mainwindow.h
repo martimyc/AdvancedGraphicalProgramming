@@ -13,6 +13,8 @@ class MainWindow;
 class EntityManager;
 class Entity;
 class OpenGLWidget;
+class QImage;
+class QFileInfo;
 
 class MainWindow : public QMainWindow
 {
@@ -23,8 +25,10 @@ public:
     ~MainWindow();
 
 public slots:
-    void openProject();
-    void saveProject();
+    void openProject() const;
+    void saveProject() const;
+    void quit();
+    void saveScreenshot();
 
     //About
     void aboutOpenGL() const;
@@ -71,5 +75,8 @@ private:
     ADS_NS::SectionContent::RefPtr _hierarchy;
     ADS_NS::SectionContent::RefPtr _gl;
 };
+
+// Threads
+void SaveScreenshot(QFileInfo fileInfo, QImage image);
 
 #endif // MAINWINDOW_H

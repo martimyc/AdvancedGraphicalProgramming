@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <iostream>
+#include <future>
 
 #include <QLabel>
 #include <QTime>
@@ -13,6 +14,8 @@
 #include <QFileSystemModel>
 #include <QBoxLayout>
 #include <QMessageBox>
+#include <QImage>
+#include <QFileDialog>
 
 #include "ads/SectionWidget.h"
 #include "ads/DropOverlay.h"
@@ -51,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionOpen_Project, SIGNAL(triggered()), this, SLOT(openProject()));
     connect(ui->actionSave_project, SIGNAL(triggered()), this, SLOT(saveProject()));
     connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(quit()));
+    connect(ui->actionSave_Screenshot, SIGNAL(triggered()), this, SLOT(saveScreenshot()));
 
     //Update inspector
     connect(hierarchy->GetTreeWidget(), SIGNAL(itemSelectionChanged()), this, SLOT(updateInspector()));
@@ -61,8 +65,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Add widgets to containter
     //OpenGL
-    _gl = ADS_NS::SectionContent::newSectionContent(QString("Open_GL"), _container, new QLabel("Open GL"), gl);
-    _container->addSectionContent(_hierarchy, nullptr, ADS_NS::CenterDropArea);
+    _gl = ADS_NS::SectionContent::newSectionContent(QString("GL"), _container, new QLabel("Open GL"), gl);
+    _container->addSectionContent(_gl, nullptr, ADS_NS::CenterDropArea);
 
     //Hierarchy
     _hierarchy = ADS_NS::SectionContent::newSectionContent(QString("Hierarchy"), _container, new QLabel("Hierarchy"), hierarchy);
@@ -97,19 +101,40 @@ void MainWindow::updateInspector()
     _container->addSectionContent(_inspector, nullptr, ADS_NS::RightDropArea);
 }
 
-void MainWindow::openProject()
+void MainWindow::openProject() const
 {
     std::cout << "Open project" << std::endl;
 }
 
-void MainWindow::saveProject()
+void MainWindow::saveProject() const
 {
     std::cout << "Save project" << std::endl;
 }
 
+void MainWindow::quit()
+{
+    std::cout << "Quiting Application" << std::endl;
+}
+
+void MainWindow::saveScreenshot()
+{
+    QFileInfo fileInfo = QFileDialog::getSaveFileName(nullptr, "Save Screenshot", "screenshot", "PNG (*.PNG; *.PNS);;JPEG (*.JPG; *.JPEG; *.JPE)");
+
+    if(fileInfo.fileName().isEmpty())
+    {
+        std::cout << "Save Screenshot: no file name" << std::endl;
+        return;
+    }
+    else
+    {
+        async(std::launch::async, SaveScreenshot, fileInfo, gl->GetScreenshot());
+    }
+}
+
+//About
 void MainWindow::aboutOpenGL() const
 {
-    //QMessageBox messageBox = QMessageBox::about(nullptr, "About Open GL", text);
+    QMessageBox::about(nullptr, "About Open GL", gl->info.Print());
 }
 
 void MainWindow::aboutQt() const
@@ -228,4 +253,11 @@ void MainWindow::closeEvent(QCloseEvent* e)
     Q_UNUSED(e);
     storeDataHelper("MainWindow", saveGeometry());
     storeDataHelper("ContainerWidget", _container->saveState());
+}
+
+// Threads
+void SaveScreenshot(QFileInfo fileInfo, QImage image)
+{
+    if(image.save(fileInfo.filePath()) == false)
+        std::cout << "Save Screenshot: could not save " << fileInfo.fileName().toStdString() << std::endl;
 }
