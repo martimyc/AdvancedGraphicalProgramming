@@ -8,13 +8,14 @@ class Entity;
 class Component
 {
 public:
-    Component(Entity* entity);
+    Component(Entity* entity, bool draw = false);
     virtual ~Component();
 
     virtual QWidget* GenerateWidget() = 0;
 
 private:
     Entity* entity;
+    bool draw;
 };
 
 #endif // COMPONENT_H

@@ -4,16 +4,21 @@
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions_3_3_Core>
 
+#include <queue>
+
+#include "import.h"
 #include "glinfo.h"
 
 class QOpenGLShaderProgram;
-class Triangle;
+class QOpenGLDebugMessage;
+class Resources;
+class EntityManager;
 
 class OpenGLWidget : public QOpenGLWidget, public QOpenGLFunctions_3_3_Core
 {
     Q_OBJECT
 public:
-    OpenGLWidget(QWidget* parent = nullptr);
+    OpenGLWidget(Resources& resources, EntityManager& entities, QWidget* parent = nullptr, bool zBuffer = true);
     ~OpenGLWidget() override;
 
     // Virtual Methods
@@ -24,14 +29,38 @@ public:
     // Extras
     QImage GetScreenshot();
 
+    // Import
+    void Import();
+
+    // Generate Standard Meshes
+    void GenStandardMeshes();
+
+private:
+    // Import into GL
+    void ImportAll();
+
 public slots:
     void finalizeGL();
+    void handleLoggedMessage(const QOpenGLDebugMessage& debugMessage);
 
 public:
     //About info
     GLInfo info;
 
-    Triangle* tri;
+private:   
+    // Depth Test
+    bool enableZBuffer;
+    bool enableZWrite;
+
+    // Import
+    std::queue<ImportMesh*> import;
+
+    // Resources
+    Resources& resources;
+
+    // Entities
+    EntityManager& entities;
+
 };
 
 #endif // OPENGLWIDGET_H

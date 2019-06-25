@@ -20,15 +20,18 @@ public:
     explicit EntityManager(QWidget *parent = nullptr);
     ~EntityManager();
 
-    //Create
+    // Create
     Entity* CreateEntity(Entity* parent = nullptr, QString name = NULL);
 
-    //Delete
+    // Delete
     void DeleteEntity(Entity *del);
 
-    //Getters
+    // Getters
     Entity* GetFocused() const;
     const QTreeWidget* GetTreeWidget() const;
+
+    // Draw
+    void DrawEntities() const;
 
 public slots:
     void createEntityButton();

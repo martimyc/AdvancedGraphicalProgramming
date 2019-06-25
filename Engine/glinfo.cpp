@@ -34,29 +34,31 @@ QString GLInfo::Print() const
 {
     std::stringstream ss;
 
-    ss << "Open GL Version: " << version.toStdString() << std::endl;
-    ss << "Open GL Renderer: " << renderer.toStdString() << std::endl;
-    ss << "Open GL Vendor: " << vendor.toStdString() << std::endl;
-    ss << "Open GLSL Version: " << glslVersion.toStdString() << std::endl;
+    ss << "Open GL Version: " << version.toStdString() << '\n';
+    ss << "Open GL Renderer: " << renderer.toStdString() << '\n';
+    ss << "Open GL Vendor: " << vendor.toStdString() << '\n';
+    ss << "Open GLSL Version: " << glslVersion.toStdString() << '\n';
 
-    ss << std::endl;
+    ss << '\n';
 
     //Surface Format info
-    ss << "Surface Format Information:" << std::endl;
-    ss << "Red Buffer Size: " << redBufferSize << std::endl;
-    ss << "Green Buffer Size: " << greenBufferSize << std::endl;
-    ss << "Blue Buffer Size: " << blueBufferSize << std::endl;
-    ss << "Alpha Buffer Size: " << alphaBufferSize << std::endl;
-    ss << "Depth Buffer Size: " << depthBufferSize << std::endl;
+    ss << "Surface Format Information:" << '\n';
+    ss << "Red Buffer Size: " << redBufferSize << '\n';
+    ss << "Green Buffer Size: " << greenBufferSize << '\n';
+    ss << "Blue Buffer Size: " << blueBufferSize << '\n';
+    ss << "Alpha Buffer Size: " << alphaBufferSize << '\n';
+    ss << "Depth Buffer Size: " << depthBufferSize << '\n';
 
-    ss << std::endl;
+    ss << '\n';
 
     //Extensions
-    ss << "Open GL Extensions: " << std::endl;
+    ss << "Open GL Extensions: " << '\n';
     for(std::vector<QString>::const_iterator it = extensions.begin(); it != extensions.end(); it++)
     {
         ss << it->toStdString() << ", ";
     }
+
+    ss << std::flush;
 
     return QString(ss.str().c_str());
 }

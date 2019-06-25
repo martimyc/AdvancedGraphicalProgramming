@@ -26,13 +26,15 @@
 #include "entitymanager.h"
 #include "entity.h"
 #include "openglwidget.h"
+#include "resources.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     inspector(new QWidget),
     hierarchy(new EntityManager(this)),
-    gl(new OpenGLWidget)
+    resources(new Resources(this)),
+    gl(new OpenGLWidget(*resources, *hierarchy, this))
 {
     ui->setupUi(this);
 
@@ -50,34 +52,38 @@ MainWindow::MainWindow(QWidget *parent) :
     // Setup actions.
     //QObject::connect(ui->actionContentList, SIGNAL(triggered()), this, SLOT(showSectionContentListDialog()));
 
-    //Connect actions' triggered signals to slots
+    // Connect actions' triggered signals to slots
     connect(ui->actionOpen_Project, SIGNAL(triggered()), this, SLOT(openProject()));
     connect(ui->actionSave_project, SIGNAL(triggered()), this, SLOT(saveProject()));
     connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(quit()));
     connect(ui->actionSave_Screenshot, SIGNAL(triggered()), this, SLOT(saveScreenshot()));
 
-    //Update inspector
+    // Update inspector
     connect(hierarchy->GetTreeWidget(), SIGNAL(itemSelectionChanged()), this, SLOT(updateInspector()));
 
-    //About
+    // About
     connect(ui->actionAboutQt, SIGNAL(triggered()), this, SLOT(aboutQt()));
     connect(ui->actionAboutOpenGL, SIGNAL(triggered()), this, SLOT(aboutOpenGL()));
 
-    //Add widgets to containter
-    //OpenGL
+    // Add widgets to containter
+    // OpenGL
     _gl = ADS_NS::SectionContent::newSectionContent(QString("GL"), _container, new QLabel("Open GL"), gl);
     _container->addSectionContent(_gl, nullptr, ADS_NS::CenterDropArea);
 
-    //Hierarchy
+    // Hierarchy
     _hierarchy = ADS_NS::SectionContent::newSectionContent(QString("Hierarchy"), _container, new QLabel("Hierarchy"), hierarchy);
     _container->addSectionContent(_hierarchy, nullptr, ADS_NS::LeftDropArea);
 
-    //Inspector
+    // Inspector
     _inspector = ADS_NS::SectionContent::newSectionContent(QString("Inspector"), _container, new QLabel("Inspector"), inspector);
     rightSection = _container->addSectionContent(_inspector, rightSection, ADS_NS::RightDropArea);
 
+    // Resources
+    _resources = ADS_NS::SectionContent::newSectionContent(QString("Resources"), _container, new QLabel("Resources"), resources);
+    rightSection = _container->addSectionContent(_resources, rightSection, ADS_NS::CenterDropArea);
+
     //Set Size
-    resize(1080, 720);
+    resize(1620, 1030);
 }
 
 MainWindow::~MainWindow()

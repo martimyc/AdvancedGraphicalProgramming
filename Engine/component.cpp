@@ -2,7 +2,7 @@
 
 #include "entity.h"
 
-Component::Component(Entity* entity): entity(entity)
+Component::Component(Entity* entity, bool draw): entity(entity), draw(draw)
 {}
 
 Component::~Component()

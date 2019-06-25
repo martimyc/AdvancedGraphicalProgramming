@@ -36,6 +36,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    indexedsubmesh.cpp \
         main.cpp \
         mainwindow.cpp \
     entitymanager.cpp \
@@ -51,13 +52,17 @@ SOURCES += \
     icontitlewidget.cpp \
     main.cpp \
     mainwindow.cpp \
+    mesh.cpp \
+    resources.cpp \
+    submesh.cpp \
     transformwidget.cpp \
     transform.cpp \
     openglwidget.cpp \
-    glinfo.cpp \
-    triangle.cpp
+    glinfo.cpp
 
 HEADERS += \
+    import.h \
+    indexedsubmesh.h \
         mainwindow.h \
     entitymanager.h \
     entity.h \
@@ -73,16 +78,21 @@ HEADERS += \
     globals.h \
     icontitlewidget.h \
     mainwindow.h \
+    mesh.h \
+    resource.h \
+    resources.h \
+    submesh.h \
     transformwidget.h \
     transform.h \
     openglwidget.h \
     glinfo.h \
-    triangle.h
+    vertexformat.h
 
 FORMS += \
         mainwindow.ui \
     entitymanager.ui \
     dialogs/SectionContentListWidget.ui \
+    resources.ui \
     transformwidget.ui
 
 RESOURCES += \

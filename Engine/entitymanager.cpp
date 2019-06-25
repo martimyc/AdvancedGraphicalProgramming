@@ -102,6 +102,14 @@ const QTreeWidget* EntityManager::GetTreeWidget() const
     return ui->treeWidget;
 }
 
+void EntityManager::DrawEntities() const
+{
+    for(std::vector<Entity*>::const_iterator it = entities.begin(); it != entities.end(); it++)
+    {
+        (*it)->Draw();
+    }
+}
+
 //Slots
 void EntityManager::createEntityButton()
 {

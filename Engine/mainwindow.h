@@ -15,6 +15,7 @@ class Entity;
 class OpenGLWidget;
 class QImage;
 class QFileInfo;
+class Resources;
 
 class MainWindow : public QMainWindow
 {
@@ -62,18 +63,20 @@ private:
     // The main container for dockings.
     ADS_NS::ContainerWidget* _container;
 
-    //Widget references
+    // Widget references
     QWidget* inspector;
     EntityManager* hierarchy;
+    Resources* resources;
     OpenGLWidget* gl;
 
-    //Sections
+    // Sections
     ADS_NS::SectionWidget* rightSection = nullptr;
 
     // Container references
     ADS_NS::SectionContent::RefPtr _inspector;
     ADS_NS::SectionContent::RefPtr _hierarchy;
     ADS_NS::SectionContent::RefPtr _gl;
+    ADS_NS::SectionContent::RefPtr _resources;
 };
 
 // Threads
